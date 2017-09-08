@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 class Post(models.Model):
@@ -17,3 +18,16 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class CommentPost(models.Medel):
+    '''Модель комметариев'''
+    class Meta()
+        db_table = 'comments'
+        verbose_name = "Комментарий"
+        verbose_name_plural = "Комментарии"
+    
+    user = models.ForeignKey(User)
+    post = models.ForeignKey(Post)
+    text = models.TextField("Текст комментария", max_length=500)
+    created = models.DateTimeField("Добавлен", auto_now_add=True)
+    moder = models.BooleanField(default=False)
