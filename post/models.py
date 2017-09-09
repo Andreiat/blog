@@ -19,9 +19,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-class CommentPost(models.Medel):
+class CommentPost(models.Model):
     '''Модель комметариев'''
-    class Meta()
+    class Meta():
         db_table = 'comments'
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
