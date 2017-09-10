@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 
 from .forms import CommentForm
-from .models import Post
+from .models import Post, CommentPost
+
 
 def post_list(request):
     post = Post.objects.filter(moder=True)
@@ -9,6 +10,7 @@ def post_list(request):
     
 def post_single(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    comment = CommentPost.objects.filter(post=post, moder=True)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -19,4 +21,4 @@ def post_single(request, pk):
     else:
         form = CommentForm()
     return render(request, "post/post_single.html", {"post": post, "form":
-        form})
+        form, 'comment':comment})

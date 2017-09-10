@@ -26,8 +26,8 @@ class CommentPost(models.Model):
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
     
-    user = models.ForeignKey(User)
-    post = models.ForeignKey(Post)
+    user = models.ForeignKey(User, verbose_name="Пользователь")
+    post = models.ForeignKey(Post, verbose_name="Статья")
     text = models.TextField("Текст комментария", max_length=500)
     created = models.DateTimeField("Добавлен", auto_now_add=True)
-    moder = models.BooleanField(default=False)
+    moder = models.BooleanField("Модерация", default=False)

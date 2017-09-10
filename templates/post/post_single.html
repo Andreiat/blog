@@ -5,12 +5,28 @@
 {% endif %}
 {{post.text}}<br /><br />
 Обновлено {{post.update}}<hr><br />
+<h4>Комментарии</h4>
+{% for comm in comment%}
+    {{comm.user}} <br>
+    {{comm.text}} <br><br>
+{%endfor%}
 
+{%comment%}
+{% for comm in post.commentpost_set.all%}
+    {{comm.user}} <br>
+    {{comm.text}} <br><br>
+{%endfor%}
+{%endcomment%}
+{% if user.is_active %}
 <p>
     <form action="" method="post">
         {%csrf_token%}
         {{form}}
         <input type="submit" value="Отправить">
     </form>
-</p>
 
+</p>
+{%else%}
+<p> Что бы оставить комментарий,
+    войдите на сайт</p>
+{%endif%}
