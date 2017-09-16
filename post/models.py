@@ -25,7 +25,7 @@ class CommentPost(models.Model):
         db_table = 'comments'
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
-    
+
     user = models.ForeignKey(User, verbose_name="Пользователь")
     post = models.ForeignKey(Post, verbose_name="Статья")
     text = models.TextField("Текст комментария", max_length=500)

@@ -6,6 +6,6 @@ class PostAdmin(admin.ModelAdmin):
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('id', 'post', 'text', 'created', 'moder')
-    
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(CommentPost, CommentAdmin)
